@@ -1,0 +1,66 @@
+<h2 class="mb-4">Detalle del pokemon</h2>
+<div class="container card" *ngIf="pokemonDetail">
+    <div class="row">
+        <div class="col-md-4 col-12 pokemon-info">
+            <div class="d-flex flex-column px-5 text-center">
+                <div class="container-img">
+                    <img [src]="pokemonDetail.sprites.front_default" (click)="makeSound()" alt="Imagen del pokemon"
+                        class="img-pokemon cursor-pointer align-self-center">
+                </div>
+                <p>
+                    <span class="detail-name">ID:</span> {{pokemonDetail.id}}
+                </p>
+                <p>
+                    <span class="detail-name">Altura:</span> {{pokemonDetail.height | formatFeature: 'ht'}}
+                </p>
+                <p>
+                    <span class="detail-name">Peso:</span> {{pokemonDetail.weight | formatFeature: 'wt'}}
+                </p>
+                <p>
+                    <span class="detail-name">Experiencia:</span> {{pokemonDetail.base_experience}}
+                </p>
+            </div>
+        </div>
+        <div class="col-md-8 col-12">
+            <h2 class="text-center mt-5 mb-5 text-capitalize">{{pokemonDetail.name}}</h2>
+            <div class="row justify-content-between">
+                <div class="col-md-6 col-12 px-5">
+                    <div>
+                        <span class="detail-name">Tipos:</span>
+                        <ul>
+                            <li *ngFor="let type of pokemonDetail.types" class="text-capitalize">
+                                <span class="link" (click)="showTypeDetail(type.type.name)">{{type.type.name}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div>
+                        <span class="detail-name">Habilidades:</span>
+                        <ul>
+                            <li *ngFor="let ability of pokemonDetail.abilities" class="text-capitalize">{{ability.ability.name}}</li>
+                        </ul>
+                    </div>
+                    <hr class="d-md-none d-block">
+                </div>
+                <div class="col-md-6 col-12 px-5 pb-3">
+                    <p class="detail-name">Movimientos: </p>
+                    <ul>
+                        <li *ngFor="let move of pokemonDetail.moves | slice : 0 : 10" class="text-capitalize">{{move.move.name}}</li>
+                        <li *ngIf="pokemonDetail.moves?.length && pokemonDetail.moves?.length! > 10"
+                            (click)="showAllMoves()">
+                            <span class="link">
+                                Entre otros...
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="d-flex justify-content-center my-5" *ngIf="!pokemonDetail">
+    <h2 class="mb-5">No se encontro el pokemon :(</h2>
+</div>
+

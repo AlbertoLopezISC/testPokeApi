@@ -1,0 +1,8 @@
+<h2 class="mb-5">Elige tu pokemon!</h2>
+<div class="container d-flex flex-wrap container-list justify-content-center">
+    <div *ngFor="let item of pokemonList" class="card container-pokeball" (click)="goToPokemonDetail(item.name)">
+        <div class="card-body d-flex flex-column justify-content-center align-self-center">
+          <h5 class="card-title">{{item.name}}</h5>
+        </div>
+      </div>
+</div>

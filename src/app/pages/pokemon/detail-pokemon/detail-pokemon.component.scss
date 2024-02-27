@@ -1,0 +1,49 @@
+.container-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 50%;
+    width: 140px;
+    align-self: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.img-pokemon {
+    max-width: 140px;
+    width: 140px;
+}
+
+.pokemon-info {
+    background-color: #74c6ed;
+}
+
+.detail-name {
+    font-weight: bold;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.link {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.link::first-letter {
+    text-transform: uppercase;
+}
+
+::ng-deep .list-moves {
+    columns: 3;
+    column-gap: 20px
+}
+
+@media screen and (max-width: 576px){
+    ::ng-deep .list-moves {
+        columns: 2;
+    }
+}
